@@ -7,12 +7,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -22,6 +16,37 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.Location{
+  transition: 0.3s ease all;
+  background-color: #2e0b2d;
+  color: #fff;
+  padding: 5px;
+  margin: 5px;
+  font-weight: bold;
+  border-radius: 0px;
+  border-color: #fff;
+}
+
+.Location.Current {
+  background-color: #04581c;
+}
+
+.col {
+  display: inline-block;
+  padding: 15px;
+  flex: 1;
+}
+
+.col.data {
+  font-weight: bold;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
 .App-link {
