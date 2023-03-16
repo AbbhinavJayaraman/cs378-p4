@@ -67,7 +67,16 @@ function App() {
       })
       .then((res) => {
         console.log("We have the data")
-        console.log(res)
+        console.log(res);
+        let cl = res["curLoc"]
+        let l = JSON.parse(res["locs"])
+        let wd = JSON.parse(res["weatherDatas"])
+        console.log(cl)
+        console.log(l)
+        console.log(wd)
+        setCurLoc(cl)
+        setLocs(l)
+        setWeatherDatas(wd)
       })
     })
     .catch((error) => {
@@ -83,8 +92,8 @@ function App() {
       // Sign-out successful.
       let sampleDict = {
         curLoc: curLoc,
-        locs: locs.toString(),
-        weatherDatas: weatherDatas.toString()
+        locs: JSON.stringify(locs),
+        weatherDatas: JSON.stringify(weatherDatas)
       }
   
       let oldUser = user.split(".")
@@ -93,9 +102,12 @@ function App() {
       setEmail("")
       setPass("")
       setUser("Not Signed In")
+      setCurLoc(AUSTIN)
+      setLocs([AUSTIN])
+      setWeatherDatas([])
       
       return fetch(`${firebaseConfig.databaseURL}/users/${oldUser[0]}.json`, {
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify(sampleDict)
       }).then((res) => {
         if (res.status !== 200) {
